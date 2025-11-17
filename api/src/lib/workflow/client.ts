@@ -27,4 +27,5 @@ export const workflowClient = new Inngest({
 	schemas: new EventSchemas().fromRecord<Events>(),
 	eventKey: process.env.INNGEST_EVENT_KEY,
 	baseUrl: process.env.INNGEST_BASE_URL,
+	isDev: true,
 });
