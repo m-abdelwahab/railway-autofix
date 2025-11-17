@@ -6,7 +6,11 @@ import { functions } from "./lib/workflow/functions";
 
 const server = Bun.serve({
 	routes: {
-		"/api/workflows": serve({ client: workflowClient, functions }),
+		"/api/workflows": serve({
+			client: workflowClient,
+			functions,
+			signingKey: process.env.INNGEST_SIGNING_KEY,
+		}),
 	},
 });
 
