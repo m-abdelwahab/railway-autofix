@@ -6,7 +6,7 @@ import { functions } from "./lib/workflow/functions";
 
 const server = Bun.serve({
 	routes: {
-		"/api/workflows": serve({ client: workflowClient, functions }),
+		"/api/inngest": serve({ client: workflowClient, functions }),
 	},
 });
 
