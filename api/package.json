@@ -1,0 +1,27 @@
+{
+	"name": "railfix",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"start": "bun run src/index.ts",
+		"dev": "bun --hot run src/index.ts",
+		"railway:codegen": "genql --endpoint https://backboard.railway.com/graphql/v2 --output ./src/lib/railway/generated"
+	},
+	"dependencies": {
+		"@ai-sdk/openai": "^2.0.65",
+		"@opencode-ai/sdk": "^1.0.65",
+		"ai": "^5.0.93",
+		"graphql": "^16.12.0",
+		"inngest": "^3.45.1",
+		"opencode-ai": "^1.0.65",
+		"zod": "^4.1.12"
+	},
+	"devDependencies": {
+		"@genql/cli": "^6.3.3",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
