@@ -4,9 +4,7 @@ const zodEnv = z.object({
 	RAILWAY_API_TOKEN: z.string(),
 	OPENAI_API_KEY: z.string(),
 	OPENCODE_BASE_URL: z.string(),
-	INNGEST_EVENT_KEY: z.string(),
-	INNGEST_SIGNING_KEY: z.string(),
-	INNGEST_BASE_URL: z.string(),
+	DATABASE_URL: z.string(),
 	// Provided by Railway
 	RAILWAY_PROJECT_ID: z.string(),
 	RAILWAY_ENVIRONMENT_ID: z.string(),
