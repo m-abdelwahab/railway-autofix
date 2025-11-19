@@ -47,6 +47,9 @@ CMD ["/bin/bash", "-c", "\
         gh auth setup-git; \
         echo '✓ GitHub CLI authenticated and configured'; \
         echo '✓ Git configured to use GitHub CLI for authentication'; \
+        gh auth status && echo '✓ GitHub authentication verified'; \
+        unset GITHUB_TOKEN; \
+        echo '✓ GITHUB_TOKEN environment variable cleared for security'; \
     fi && \
     if [ -n \"$GIT_USER_NAME\" ]; then \
         git config --global user.name \"$GIT_USER_NAME\"; \
@@ -55,9 +58,6 @@ CMD ["/bin/bash", "-c", "\
     if [ -n \"$GIT_USER_EMAIL\" ]; then \
         git config --global user.email \"$GIT_USER_EMAIL\"; \
         echo \"✓ Git user email set to: $GIT_USER_EMAIL\"; \
-    fi && \
-    if [ -n \"$GITHUB_TOKEN\" ]; then \
-        gh auth status && echo '✓ GitHub authentication verified'; \
     fi && \
     echo '' && \
     echo 'OpenCode agent starting...' && \
