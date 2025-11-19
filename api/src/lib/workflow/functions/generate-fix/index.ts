@@ -3,7 +3,7 @@ import { agent } from "src/lib/agent";
 import type { ServiceContext } from "src/lib/workflow/types";
 import { analyzeWithAI } from "./analyze-with-ai";
 
-type GenerateFixData = {
+export type GenerateFixData = {
 	architectureSummary: string;
 	issuesSummary: string;
 	serviceContexts: ServiceContext[];

@@ -1,17 +1,17 @@
-import type { PgBoss } from "pg-boss";
+import type { Job } from "pg-boss";
 import { getBuildLogs, type LogEntry } from "src/lib/railway/get-build-logs";
 import { getDeploymentLogs } from "src/lib/railway/get-deployment-logs";
 import { getHttpLogs, type HttpLogEntry } from "src/lib/railway/get-http-logs";
 import { boss } from "src/lib/workflow/client";
 import type { ProjectArchitecture } from "src/lib/workflow/functions/monitor-project-health/log-architecture";
 
-type PullServiceContextData = {
+export type PullServiceContextData = {
 	architectureSummary: string;
 	issuesSummary: string;
 	affectedServices?: ProjectArchitecture["services"];
 };
 
-export const pullServiceContext = async (job) => {
+export const pullServiceContext = async (job: Job<PullServiceContextData>) => {
 	const { architectureSummary, issuesSummary, affectedServices } = job.data;
 
 	// Build target tuples of (serviceName, deploymentId, repoUrl) and skip services without a deployment
@@ -37,7 +37,7 @@ export const pullServiceContext = async (job) => {
 	}
 
 	const allStepPromises = targets.flatMap(
-		([serviceName, deploymentId, _repoUrl]) => [
+		([_serviceName, deploymentId, _repoUrl]) => [
 			getBuildLogs(deploymentId),
 			getDeploymentLogs(deploymentId),
 			getHttpLogs(deploymentId, {
