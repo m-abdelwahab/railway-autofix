@@ -1,4 +1,4 @@
-import type PgBoss from "pg-boss";
+import type { PgBoss } from "pg-boss";
 import { getBuildLogs, type LogEntry } from "src/lib/railway/get-build-logs";
 import { getDeploymentLogs } from "src/lib/railway/get-deployment-logs";
 import { getHttpLogs, type HttpLogEntry } from "src/lib/railway/get-http-logs";
@@ -11,9 +11,7 @@ type PullServiceContextData = {
 	affectedServices?: ProjectArchitecture["services"];
 };
 
-export const pullServiceContext = async (
-	job: PgBoss.Job<PullServiceContextData>,
-) => {
+export const pullServiceContext = async (job) => {
 	const { architectureSummary, issuesSummary, affectedServices } = job.data;
 
 	// Build target tuples of (serviceName, deploymentId, repoUrl) and skip services without a deployment

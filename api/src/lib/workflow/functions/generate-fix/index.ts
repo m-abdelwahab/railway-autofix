@@ -1,4 +1,4 @@
-import PgBoss from "pg-boss";
+import type { Job } from "pg-boss";
 import { agent } from "src/lib/agent";
 import type { ServiceContext } from "src/lib/workflow/types";
 import { analyzeWithAI } from "./analyze-with-ai";
@@ -9,7 +9,7 @@ type GenerateFixData = {
 	serviceContexts: ServiceContext[];
 };
 
-export const generateFix = async (job: PgBoss.Job<GenerateFixData>) => {
+export const generateFix = async (job: Job<GenerateFixData>) => {
 	const { architectureSummary, issuesSummary, serviceContexts } = job.data;
 
 	// Step 1: Analyze with AI to generate fix recommendations
@@ -96,9 +96,7 @@ export const generateFix = async (job: PgBoss.Job<GenerateFixData>) => {
 				return {
 					success: false,
 					error:
-						error instanceof Error
-							? error.message
-							: "Unknown error occurred",
+						error instanceof Error ? error.message : "Unknown error occurred",
 					sessionId: null,
 				};
 			}
@@ -177,10 +175,7 @@ Please proceed with implementing these fixes.
 				});
 
 				if (response.error) {
-					console.error(
-						`OpenCode API error for ${repoUrl}:`,
-						response.error,
-					);
+					console.error(`OpenCode API error for ${repoUrl}:`, response.error);
 					return {
 						success: false,
 						error: `API error: ${JSON.stringify(response.error)}`,
@@ -205,9 +200,7 @@ Please proceed with implementing these fixes.
 				return {
 					success: false,
 					error:
-						error instanceof Error
-							? error.message
-							: "Unknown error occurred",
+						error instanceof Error ? error.message : "Unknown error occurred",
 				};
 			}
 		})();
