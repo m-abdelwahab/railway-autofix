@@ -112,7 +112,7 @@ export const monitorProjectHealth = async () => {
 			),
 		);
 
-		await boss.send("agent/pull-service-context", {
+		await boss.send("agent.pull-service-context", {
 			architectureSummary,
 			issuesSummary,
 			affectedServices,

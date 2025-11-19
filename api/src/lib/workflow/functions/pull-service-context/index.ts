@@ -64,7 +64,7 @@ export const pullServiceContext = async (job) => {
 	);
 
 	// Trigger generate-fix workflow
-	await boss.send("agent/generate-fix", {
+	await boss.send("agent.generate-fix", {
 		architectureSummary,
 		issuesSummary,
 		serviceContexts,
