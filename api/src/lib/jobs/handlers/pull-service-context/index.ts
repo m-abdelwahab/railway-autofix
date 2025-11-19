@@ -1,9 +1,9 @@
-import type { Job } from "pg-boss";
+import type { Job } from "bullmq";
+import type { ProjectArchitecture } from "src/lib/jobs/handlers/monitor-project-health/log-architecture";
+import { generateFixQueue } from "src/lib/jobs/queues";
 import { getBuildLogs, type LogEntry } from "src/lib/railway/get-build-logs";
 import { getDeploymentLogs } from "src/lib/railway/get-deployment-logs";
 import { getHttpLogs, type HttpLogEntry } from "src/lib/railway/get-http-logs";
-import { boss } from "src/lib/workflow/client";
-import type { ProjectArchitecture } from "src/lib/workflow/functions/monitor-project-health/log-architecture";
 
 export type PullServiceContextData = {
 	architectureSummary: string;
@@ -64,7 +64,7 @@ export const pullServiceContext = async (job: Job<PullServiceContextData>) => {
 	);
 
 	// Trigger generate-fix workflow
-	await boss.send("agent.generate-fix", {
+	await generateFixQueue.add("generate-fix", {
 		architectureSummary,
 		issuesSummary,
 		serviceContexts,

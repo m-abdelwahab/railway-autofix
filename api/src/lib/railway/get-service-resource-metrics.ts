@@ -1,4 +1,4 @@
-import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/workflow/constants";
+import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/jobs/constants";
 import { railway } from "./client";
 
 const CPU_USAGE_MEASUREMENT = "CPU_USAGE" as const;

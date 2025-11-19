@@ -1,3 +1,4 @@
+import { pullContextQueue } from "src/lib/jobs/queues";
 import {
 	getDeploymentHttpMetrics,
 	type HttpMetricsSummary,
@@ -10,7 +11,6 @@ import {
 	getServiceResourceMetrics,
 	type ServiceResourceMetrics,
 } from "src/lib/railway/get-service-resource-metrics";
-import { boss } from "src/lib/workflow/client";
 import { detectInfrastructureIssues } from "./detect-issues";
 import { logProjectArchitecture } from "./log-architecture";
 import { logInfrastructureIssues } from "./log-issues";
@@ -112,7 +112,7 @@ export const monitorProjectHealth = async () => {
 			),
 		);
 
-		await boss.send("agent.pull-service-context", {
+		await pullContextQueue.add("pull-service-context", {
 			architectureSummary,
 			issuesSummary,
 			affectedServices,

@@ -1,8 +1,8 @@
 import { openai } from "@ai-sdk/openai";
 import { generateObject } from "ai";
+import type { ServiceContext } from "src/lib/jobs/types";
 import type { LogEntry } from "src/lib/railway/get-build-logs";
 import type { HttpLogEntry } from "src/lib/railway/get-http-logs";
-import type { ServiceContext } from "src/lib/workflow/types";
 import { z } from "zod";
 
 export type DebugAnalysis = {

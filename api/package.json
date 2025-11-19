@@ -14,9 +14,10 @@
 		"@ai-sdk/openai": "^2.0.65",
 		"@opencode-ai/sdk": "^1.0.65",
 		"ai": "^5.0.93",
+		"bullmq": "^5.63.2",
 		"graphql": "^16.12.0",
+		"ioredis": "^5.8.2",
 		"opencode-ai": "^1.0.78",
-		"pg-boss": "^12.2.0",
 		"zod": "^4.1.12"
 	},
 	"devDependencies": {

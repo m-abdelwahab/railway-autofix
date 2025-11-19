@@ -1,4 +1,4 @@
-import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/workflow/constants";
+import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/jobs/constants";
 import { DEFAULT_HTTP_METRICS_LIMIT } from "./constants";
 import { getHttpLogs } from "./get-http-logs";
 

@@ -1,4 +1,4 @@
-import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/workflow/constants";
+import { DEFAULT_QUERY_WINDOW_MS } from "src/lib/jobs/constants";
 import { railway } from "./client";
 import { DEFAULT_DEPLOYMENT_LOGS_LIMIT } from "./constants";
 

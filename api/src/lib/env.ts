@@ -5,6 +5,7 @@ const zodEnv = z.object({
 	OPENAI_API_KEY: z.string(),
 	OPENCODE_BASE_URL: z.string(),
 	DATABASE_URL: z.string(),
+	REDIS_URL: z.string(),
 	// Provided by Railway
 	RAILWAY_PROJECT_ID: z.string(),
 	RAILWAY_ENVIRONMENT_ID: z.string(),

@@ -1,6 +1,6 @@
-import type { Job } from "pg-boss";
+import type { Job } from "bullmq";
 import { agent } from "src/lib/agent";
-import type { ServiceContext } from "src/lib/workflow/types";
+import type { ServiceContext } from "src/lib/jobs/types";
 import { analyzeWithAI } from "./analyze-with-ai";
 
 export type GenerateFixData = {

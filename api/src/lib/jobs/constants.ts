@@ -1,5 +1,5 @@
 export const DEFAULT_QUERY_WINDOW_MS = 30 * 60 * 1000; // 30 minutes
-export const MONITOR_PROJECT_HEALTH_WORKFLOW_CRON = "*/10 * * * *"; // every 10 minutes
+export const MONITOR_PROJECT_HEALTH_JOB_CRON = "*/10 * * * *"; // every 10 minutes
 
 // Infrastructure Issue Detection Thresholds
 // Resource Usage (CPU and Memory) - Percentage-based thresholds
