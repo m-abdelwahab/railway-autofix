@@ -43,12 +43,12 @@ EXPOSE 4096
 CMD ["/bin/bash", "-c", "\
     if [ -n \"$GITHUB_TOKEN\" ]; then \
         echo 'Configuring GitHub CLI authentication...'; \
-        echo \"$GITHUB_TOKEN\" | gh auth login --with-token; \
+        TEMP_TOKEN=\"$GITHUB_TOKEN\"; \
+        unset GITHUB_TOKEN; \
+        echo \"$TEMP_TOKEN\" | gh auth login --with-token; \
         gh auth setup-git; \
         echo '✓ GitHub CLI authenticated and configured'; \
         echo '✓ Git configured to use GitHub CLI for authentication'; \
-        unset GITHUB_TOKEN; \
-        echo '✓ GITHUB_TOKEN environment variable cleared for security'; \
         gh auth status && echo '✓ GitHub authentication verified'; \
     fi && \
     if [ -n \"$GIT_USER_NAME\" ]; then \
